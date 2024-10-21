@@ -1,0 +1,33 @@
+<?php
+	include 'koneksi.php';
+	session_start();
+	
+	$login = @$_POST['login']
+	if (issert($login)){
+		$user = $_POST['user'];
+		$pass = $_POST['pass'];
+	}
+?>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	</head>
+	<body style="width:300px;margin:100px auto">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				LOGIN
+			</div>
+			<div class="panel-body">
+				<form action="" method="post">
+					<input type="text" name="user" placeholder="Username" class="form-control" required="">
+					<input type="password" name="pass" placeholder="Password" class="form-control">
+					<input type="submit" name="login" class="btn btn-primary btn-block" value="LOGIN">
+					<input type="reset" name="res" class="btn btn-danger btn-block" value="Clear">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Akta | eNotaris.com </title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="Preview page of Metronic Admin Theme #4 for statistics, charts, recent events and reports" name="description" />
+        <meta content="" name="author" />
+
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+        <link href="<?php echo base_url("assets/css/font.css"); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url("assets/plugins/font-awesome/css/font-awesome.min.css"); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url("assets/plugins/simple-line-icons/simple-line-icons.css"); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url("assets/plugins/bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url("assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css"); ?>" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PLUGINS STYLES -->
+         <link href="<?php echo base_url("assets/plugins/bootstrap-daterangepicker/daterangepicker.min.css"); ?>" rel="stylesheet" type="text/css" />
+         <link href="<?php echo base_url("assets/plugins/bootstrap-toastr/toastr.min.css"); ?>" rel="stylesheet" type="text/css" />
+         <link href="<?php echo base_url("assets/plugins/select2/css/select2.min.css"); ?>" rel="stylesheet" type="text/css" />
+         <link href="<?php echo base_url("assets/plugins/select2/css/select2-bootstrap.min.css"); ?>" rel="stylesheet" type="text/css" />
+        <!-- END PLUGINS STYLES -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="<?php echo base_url("assets/css/components-rounded.css"); ?>" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="<?php echo base_url("assets/css/plugins.css"); ?>" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="<?php echo base_url("assets/css/layout.css"); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url("assets/css/themes/default.css"); ?>" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="<?php echo base_url("assets/css/custom.css"); ?>" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+
+        <link href="<?php echo base_url("assets/css/jquery-ui.css"); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url("assets/daterange/daterangepicker.css"); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url("assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url("assets/plugins/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css"); ?>" rel="stylesheet" type="text/css" />
+        
+        <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo/favicon.ico"); ?>">
+        <link rel="icon" type="image/png" href="<?php echo base_url("assets/img/logo/favicon-32x32.png"); ?>" sizes="32x32" />
+        <link rel="icon" type="image/png" href="<?php echo base_url("assets/img/logo/favicon-16x16.png"); ?>" sizes="16x16" />
+
+        <style type="text/css">
+            .select2-container {
+                width: 100% !important;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <!-- END HEAD -->
+
+    <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+        <?php $this->load->view("template/header"); ?>
+
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <?php $this->load->view("template/sidebar", ["active" => "akta"]); ?>
+
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEAD-->
+                    <div class="page-head">
+                        <!-- BEGIN PAGE TITLE -->
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="page-title">
+                                    <h1>Akta</h1>
+                                </div>
+                            </div>  
+                            <div class="col-md-6 col-sm-12 col-xs-12 text-right">
+                                <div class="title-action form-inline">
+                                    <div class="form-group text-center">
+                                        <form id="frmSearch" action="">     
+                                            <div class="input-group input-search">
+                                                <input type="text" placeholder="Cari Nama Klien" value="<?php echo $this->input->post("kywd"); ?>" name="kywd" id="kywd" class="form-control"> 
+                                                <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-primary" title="Pencarian. Ketik keyword lalu tekan [Enter]"><i class="fa fa-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="form-group text-center form-action">    
+                                        <a role="button" class="btn btn-primary" data-toggle="collapse" data-target=".boxFilter" title="Filter & Urutkan Data">
+                                            <i class="fa fa-filter"></i>
+                                        </a>                                                
+                                        <a class="btn btn-primary" onclick="location.reload();" title="Refresh Data (Reload Halaman)">
+                                            <i class="fa fa-refresh"></i>
+                                        </a> 
+                                        <a role="button" class="btn btn-primary disabled" onclick="prevPage(this);" data-page="1" id="btnPrev" title="Tampilkan data sebelumnnya">
+                                            <i class="fa fa-chevron-left"></i>
+                                        </a>                                                    
+                                        <a role="button" class="btn btn-primary disabled" onclick="nextPage(this);" data-page="1" id="btnNext" title="Tampilkan data berikutnya">
+                                            <i class="fa fa-chevron-right"></i>
+                                        </a>              
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        <!-- END PAGE TITLE -->
+                    </div>
+                    <!-- END PAGE HEAD-->
+                    <!-- BEGIN PAGE BASE CONTENT -->
+                    <div class="base-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="collapse boxFilter collapse">
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-body">
+                                            <form id="filter-form">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Tanggal Order</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" name="from" id="tgl_order">
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn" type="button" title="Batal" onclick="tgl_batal();" >X</button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="inputnama" class="control-label">Klien</label>
+                                                            <div class="input-group">
+                                                                <input type="text" id="nama_klien" class="form-control" disabled="">
+                                                                <input type="hidden" id="id_klien">
+                                                                <span class="input-group-btn">
+                                                                    <a data-toggle="modal" href="#m_klien" onclick="ref_klien();" class="btn green-turquoise" title="Pilih Klien">
+                                                                          <i class="fa fa-search"></i>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="inputnama" class="control-label">Layanan</label>
+                                                        
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" id="nama_layanan" disabled="">
+                                                                <input type="hidden" id="id_layanan">
+                                                                <span class="input-group-btn">
+                                                                    <a data-toggle="modal" href="#m_layanan" onclick="ref_layanan();" class="btn green-turquoise" title="Pilih Layanan">
+                                                                          <i class="fa fa-search"></i>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Urutkan</label>
+                                                            <select class="form-control" id="filter_sort">
+                                                                <option value="_id desc">Default</option>
+                                                                <option value="tgl_order desc">Tgl Order Desc</option>
+                                                                <option value="tgl_order asc">Tgl Order Asc</option>
+                                                                <option value="nama_klien desc">Nama desc</option>
+                                                                <option value="nama_klien asc">Nama  Asc</option>
+                                                                <option value="nama_layanan desc">Layanan desc</option>
+                                                                <option value="nama_layanan asc">Layanan  Asc</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <button class="btn btn-primary btn-tampilkan-filter">Tampilkan</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="portlet light bordered table-list">
+                                    <div class="portlet-body">
+                                        <div class="table-container">
+                                            <table class="table table-responsive table-striped" style="margin-bottom: 0px;" style="text-align: left;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 5%;">Action</th>
+                                                        <th style="width: 5%;">No Order</th>
+                                                        <th style="width: 20%;">Tgl Order</th>
+                                                        <th style="width: 15%;">Klien</th>
+                                                        <th style="width: 10%;">Sifat Akta</th>
+                                                        <th style="width: 10%;">Buat</th>
+                                                        <th style="width: 10%;">Cetak</th>
+                                                        <th style="width: 10%;">Realisasi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="list-data"></tbody>
+                                            </table>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $this->load->view("template/paging");         ?>
+                    <?php $this->load->view("template/modal/klien")     ?>
+                    <?php $this->load->view("template/modal/layanan")   ?>
+                    <?php $this->load->view("akta/modal/edit")          ?>
+                    <!-- END PAGE BASE CONTENT -->
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+
+        <?php $this->load->view("template/footer"); ?>
+
+        <!--[if lt IE 9]>
+        <script src="<?php echo base_url("assets/js/ie-script/respond.min.js"); ?>"></script>
+        <script src="<?php echo base_url("assets/js/ie-script/excanvas.min.js"); ?>"></script> 
+        <script src="<?php echo base_url("assets/js/ie-script/ie8.fix.min.js"); ?>"></script> 
+        <![endif]-->
+
+        <script src="<?php echo base_url("assets/js/public.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/plugins/ifvisible.min.js"); ?>" type="text/javascript"></script>
+        <!-- Date Picker -->
+        <script src="<?php echo base_url("assets/plugins/jquery.form.min.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/js/jquery-ui.js"); ?>" type="text/javascript"></script>
+        <!-- End Date Picker -->
+        <script src="<?php echo base_url("assets/js/metronic.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/js/dashboard.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/js/layout.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/js/demo.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/js/app.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/daterange/moment.min.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/daterange/daterangepicker.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/pages/scripts/components-date-time-pickers.min.js"); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url("assets/plugins/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"); ?>" type="text/javascript"></script>
+        <script>
+                $(document).ready(function() {
+                    //$("#tgl_menghadap").datepicker({dateFormat: 'dd-mm-yy'});
+            });
+        </script>
+        <script>
+        //Update
+                var buatakta,cetakakta,realisasiakta;
+
+              function _update(){
+                var _id =  $("#_id").val();
+
+                if ($("#buat").is(':checked')){
+                   buatakta = "1";
+                }
+                else{
+                    buatakta = "0";
+                }
+
+                if ($("#cetak").is(':checked')){
+                   cetakakta = "1";
+                }
+                else{
+                    cetakakta = "0";
+                }
+
+                if ($("#realisasi").is(':checked')){
+                   realisasiakta = "1";
+                }
+                else{
+                    realisasiakta = "0";
+                }
+
+                var param = {
+                             "tgl_menghadap" : $("#tgl_menghadap").val(),
+                             "jam_menghadap" : $("#jam_menghadap").val(),
+                             "data_penghadap" : $("#data_menghadap").val(),
+                             "sdh_cetakakta" : cetakakta,
+                             "sdh_realisasi" : realisasiakta,
+                             "sdh_buatakta" : buatakta}
+                $.ajax({
+                    type : "post",
+                    url : "<?php echo base_url(); ?>index.php/akta/update/"+_id,
+                    data : {param : param, id: _id },
+                    dataType: 'json',
+                    success : function (data){
+                        console.log(data);
+                    }
+                });
+                console.log(param);
+                location.reload();
+             }
+
+            function editData(selector) {
+                var id = $(selector).attr("data-id");
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + utama,
+                    data: { action: "get_databyid", param : {"id": id} },
+                    dataType: "json",
+                    success: function (data) {
+                        var a = false;
+                        var b = false;
+                        var c = false;
+                        var result = data.Data[0]; 
+                        
+                        (result.tgl_menghadap == "0000-00-00" ? "" : $("#tgl_menghadap").val(formatDate1(result.tgl_menghadap)));
+                        (result.jam_menghadap == "" ? $("#jam_menghadap").val() : $("#jam_menghadap").val(result.jam_menghadap));
+                        (result.data_penghadap == "" ? $("#data_menghadap").val() : $("#data_menghadap").val(result.data_penghadap));
+
+                        $("#_id").val(result._id);
+
+                        cbbuatakta = result.sdh_buatakta;
+                        cbcetakakta = result.sdh_cetakakta;
+                        cbrealisasi = result.sdh_realisasi;
+
+                        if(cbbuatakta == '1')
+                        {
+                            a= true;
+                        }else
+                        {
+                            a= false;
+                        }
+
+                        if (cbcetakakta == '1') 
+                        {
+                            b= true;
+                        }else{
+                            b = false;
+                        }
+
+                        if(cbrealisasi == '1')
+                        {
+                            c = true;
+                        }else{
+                            c = false;
+                        }
+
+                        $("#buat").prop('checked', a);
+                        $("#cetak").prop('checked', b);
+                        $("#realisasi").prop('checked', c);
+
+                        $("#m_update").modal("show");
+                        $('#m_update').on('shown.bs.modal', function() {
+                            $("#tgl_menghadap").focus();
+                            /*$("#jam_menghadap").datetimepicker({
+                                format: 'HH:mm',
+                            });*/
+
+                        $("#buat").click(function(){
+                            if ($("#buat").is(':checked')){
+                                buatakta = "1";
+                            }
+                            else{
+                                buatakta = "0";
+                            }
+                        });
+
+                        $("#cetak").click(function(){
+                            if ($("#cetak").is(':checked')){
+                                cetakakta = "1";
+                            }
+                            else{
+                                cetakakta = "0";
+                            }
+                        });
+
+                        $("#realisasi").click(function(){
+                            if ($("#realisasi").is(':checked')){
+                                realisasiakta = "1";
+                            }
+                            else{
+                                realisasiakta = "0";
+                            }
+                        });
+
+                        console.log(data);
+
+                        });
+                    }
+                });
+
+            }
+
+            $("#editakta").submit(function(){
+               _update();
+              location.reload();
+               return false;
+            })
+        </script>
+        <script type="text/javascript">
+            var page = 1, kywd = "", limit = 10, filter = {"sort" : "_id desc"}, utama = "akta";
+            var data;
+
+            $(document).ready(function() {
+                loadTable( "#list-data" ,kywd, page, limit, filter, utama, 10)
+                get_modal_data(m_kywd,1,"ctrl_public/data_klien","#list-klien");
+                $("#kywd").focus();
+
+            });
+
+            $('#tgl_order').focus(function() {
+                
+                    $('#tgl_order').daterangepicker();
+
+            });
+
+            function tgl_batal(){
+
+                    $('#tgl_order').daterangepicker("destroy");
+                    $('#tgl_order').val(null);
+            }
+
+
+            $("#frmSearch").submit(function() {
+                kywd = $("#kywd").val();
+                page = 1;
+                loadTable( "#list-data" ,kywd, page, limit, filter, utama, 10);
+                return false;
+            });
+
+            $("#jumpPage").submit(function() {
+                loadTable( "#list-data", kywd, $(".pageNum").val(), limit, filter, utama);
+                return false;
+            });
+
+            $("#limit").change(function() {
+                page = 1;
+                $("#btnNext, #btnNextBwh").attr("data-page", 1);
+                $("#btnPrev, #btnPrevBwh").attr("data-page", 1);
+                
+                limit = $(this).val();
+                loadTable("#list-data",kywd, page, limit, filter, utama, 10);
+            });     
+
+            function nextPage(selector) {
+                var hal = $(selector).attr("data-page");
+                loadTable("#list-data", kywd, hal, limit, filter, utama, 10);
+            }
+
+            function prevPage(selector) {
+                var hal = $(selector).attr("data-page");
+                loadTable("#list-data", kywd, hal, limit, filter, utama, 10);
+            }
+
+            $("#filter-form").submit(function() {
+                page = 1;
+                var tgl_order    =  $("#tgl_order").val();
+                var nama_klien   = $("#nama_klien").val();
+                var nama_layanan = $("#nama_layanan").val();
+                var sort         = $("#filter_sort").val();
+
+                filter = {"sort" : sort, "tgl_order" : tgl_order, "nama_klien" : nama_klien , "nama_layanan" : nama_layanan}
+                loadTable( "#list-data" ,kywd, page, limit, filter, utama, 10);
+                return false;
+            });
+
+            $(".s2").select2();
+        </script>
+
+        <script>
+        //fungsi modal agar berisi dan bisa pagination
+        
+            function get_modal_data(m_kywd, m_hal , m_utama, m_table)
+            {
+                m_hal = (m_hal < 1) ? "1" : m_hal; 
+                console.log("hal: "+m_hal+" kywd: "+m_kywd);
+                   $.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url(); ?>"+m_utama,
+                        data: {param : {"page":m_hal, "kywd":m_kywd}},
+                        dataType: "json",
+                        success: function (result) {
+
+                            page = result.paging.HalKe;
+
+                            if(result.paging.IsNext == true) {
+                                $(".btnNext").attr("data-page", (page + 1));  
+                                $(".btnNext").removeClass("disabled");
+                            }else{
+                                $(".btnNext").addClass("disabled");
+                            }
+
+                            if(result.paging.IsPrev == true) {
+                                $(".btnPrev").attr("data-page", (page - 1));
+                                $(".btnPrev").removeClass("disabled");
+                            } else {
+                                $(".btnPrev").addClass("disabled");
+                            }
+
+
+
+                        $(m_table).html(result["list_result"]);
+                        }
+                   });
+            }
+            
+            function nextPageM(selector) {
+                var m_hal = $(selector).attr("data-page");
+                m_table = $(selector).attr("table");
+                m_utama = $(selector).attr("utama");
+                get_modal_data(m_kywd, m_hal, m_utama, m_table);
+                console.log(" kywd : "+m_kywd+" hal : "+m_hal+" utama : "+m_utama+" table : "+m_table);
+            }
+
+            function prevPageM(selector) {
+                var m_hal = $(selector).attr("data-page");
+                m_table = $(selector).attr("table");
+                m_utama = $(selector).attr("utama");
+                get_modal_data(m_kywd, m_hal, m_utama, m_table);
+                console.log(" kywd : "+m_kywd+" hal : "+m_hal+" utama : "+m_utama+" table : "+m_table);
+            }
+        </script>
+
+        <script>
+        //fungsi menekan search modal
+            function ref_klien()
+            {
+                get_modal_data("", "" , "umum/data_klien", "#list-klien");
+            }
+            function ref_layanan()
+            {
+                get_modal_data("", "", "umum/data_layanan", "#list-layanan");
+            }
+        </script>
+
+        <script>
+        //search
+
+        var kywd= "", hal = 1;
+        var m_kywd="" , m_utama ="", m_table="";
+
+            $("#form-search-klien").submit(function(){
+                search_data = $("#s-klien").val();
+                get_modal_data(search_data, "" , "umum/data_klien", "#list-klien");   
+                return false;
+            })
+
+            $("#form-search-layanan").submit(function(){
+                search_data = $("#s-layanan").val();
+                get_modal_data(search_data, "", "umum/data_layanan", "#list-layanan"); 
+                return false;
+            })
+
+            //set data ke form
+            function set_klien(selector)
+            {
+                nama = $(selector).attr("data-klien");
+                id = $(selector).attr("data-id");
+                $("#nama_klien").val(nama);
+                $("#id_klien").val(id);
+                $('#m_klien').modal('hide');
+            }
+
+            function set_layanan(selector)
+            {
+                nama = $(selector).attr("data-layanan");
+                id = $(selector).attr("data-id");
+                $("#nama_layanan").val(nama);
+                $("#id_layanan").val(id);
+                $('#m_layanan').modal('hide');
+            }
+
+        </script>
+    </body>
+</html>

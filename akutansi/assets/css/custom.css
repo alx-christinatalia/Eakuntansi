@@ -1,0 +1,287 @@
+/* here you can put your own css to customize and override the theme */
+.page-head .page-title {
+    padding: 0px;
+}
+.page-header.navbar {
+    height: 50px;
+    min-height: 50px;
+}
+.page-header.navbar .top-menu .navbar-nav> li.dropdown > .dropdown-toggle > .count-badge {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    padding: 3px 6px;
+    width: 18px;
+    height: 18px;
+}
+.page-header.navbar .search-form {
+    margin-top: 8px;
+    margin-right:5px;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown>.dropdown-toggle {
+    padding: 20px 12px 7px;
+    height: 49px;
+}
+.page-header.navbar .menu-toggler.sidebar-toggler {
+    margin: 18px 0 0;
+}
+.page-header.navbar .page-logo {
+    height: auto;
+}
+.page-header.navbar .page-logo .logo-default {
+    margin: 10px 10px 0;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user {
+    padding: 0px;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle>img {
+    height: 30px
+}
+.page-header.navbar .top-menu .navbar-nav>li.quick-sidebar-toggler {
+    padding: 15px 12px 24px;
+}
+.page-company .company-name {
+    font-size: 18px;
+    color: #fff;
+    margin: -5px 0 0;
+}
+.page-container {
+    padding: 0px 20px 0;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown {
+    height: 52px;
+}
+
+.dropdown-action {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+.base-content {
+    margin-top: 15px;
+}
+.portlet {
+    margin-bottom: 15px;
+}
+
+.div-action {
+    margin-top: -4px;
+}
+.text-white {
+    color: #fff !important;
+}
+.page-title h1 {
+    font-size: 30px !important;
+}
+
+/* Pagination CSS */
+.pagination {
+    margin-top: 0px;
+}
+.pagination-nav .btn-nav, .pagination-nav .btn-nav:hover {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    cursor: pointer;
+    color: #fff;
+}
+.pagination-nav .disabled {
+    background-color: #72A1CC !important;
+    border-color: #72A1CC !important;
+    color: #FFFFFF !important;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+.pageNum {
+    width: 50px;
+    padding: 5px;
+    outline: none;
+    height: 30px;
+    border: none;
+    text-align: center;
+}
+#infoPage {
+    font-size: 14px;
+}
+#btnNextBwh {
+    border-right: 2px solid #fff;
+}
+#btnPrevBwh {
+    border-left: 1px solid #fff;
+}
+#limit {
+    width: 70px;
+}
+
+.select2-addnew {
+    font-size: 14px;
+}
+.select2-addnew:hover {
+    color: #2f2f2f;
+    text-decoration: none;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.timeline .timeline-body {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 14px;
+}
+.timeline .timeline-body-alerttitle {
+    font-size: 15px;
+}
+.timeline .timeline-icon i {
+    font-size: 28px;
+}
+.timeline .timeline-icon {
+    padding-top: 32px;
+    padding-left: 26px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > img {
+    margin-left: 0px;
+    margin-top: -15px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .page-header.navbar .menu-toggler.responsive-toggler {
+        margin: 15.5px 14px 0 6px;
+    }
+    .page-company .company-icon {
+        display: none;
+    }
+    .page-header.navbar .page-top {
+        height: auto;
+    }
+    #section-paging .action-list {
+        padding-right: 50px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .page-header.navbar .search-form.open {
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-width : 800px) {
+    .page-company .top-menu ul.nav.navbar-nav.pull-right {
+        margin-right: 20px;
+        float: left;
+    }
+    .page-header.navbar .page-top {
+        height: auto;
+        margin-top: 0px;
+    }
+    .page-company .company-icon {
+        display: block;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    .page-header.navbar {
+        height: 53px;
+    }
+    .page-header.navbar .search-form, .page-header.navbar .search-form.open {
+        margin-top: 0;
+    }
+    .page-header.navbar .page-top {
+        height: auto;
+    }    
+    .page-header.navbar .top-menu .navbar-nav>li.dropdown-user, .page-container {
+        padding: 0px;
+    }
+    .page-header.navbar .page-company {
+        margin-right: 70px;
+    }
+    .page-header.navbar .menu-toggler.responsive-toggler {
+        margin-bottom: 23px;
+    }
+    .search-form .input-group {
+        margin-top: 10px;
+    }
+    .page-header.navbar .page-company {
+        margin-right: 50px;
+    }
+
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu {
+        margin-right: -134px;
+    }
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu {
+        margin-right: -46px;
+    }
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu {
+        margin-right: -90px;
+    }
+
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu::after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-notification .dropdown-menu::before {
+        margin-right: 130px;
+    }
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu::after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu::before {
+        margin-right: 42px;
+    }
+    .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu::after, .page-header.navbar .top-menu .navbar-nav > li.dropdown-inbox .dropdown-menu::before {
+        margin-right: 85px;
+    }
+    
+    /* Company Section */
+    .page-header.navbar .page-company.top-menu .navbar-nav > li.dropdown .dropdown-menu::after {
+        right: 50px;
+    }
+    .page-company .nav.pull-right > li > .dropdown-menu, .nav > li > .dropdown-menu.pull-right {
+        right: -42px;
+    }
+
+    .table-list .table-container {
+        overflow-x: scroll;
+    }
+}
+
+@media only screen and (max-width : 640px) {
+    .page-head .title-action {
+        margin-top: 10px;
+    }
+    .page-header.navbar .search-form {
+        display: block;
+    }
+    .page-header.navbar .top-menu {
+        float: right;
+    }
+    .page-header.navbar .search-form {
+        margin-top: -54px;
+    }
+    .page-header.navbar .page-top {
+        height: auto;
+        margin-top: 0px;
+    }
+    .page-header.navbar .search-form {
+        margin-right: 55px;
+    }
+    .page-content-wrapper .page-content .page-title {
+        margin-bottom: 0px;
+    }
+    .expanding {
+        position: relative !important;
+    }
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+    .page-header.navbar .page-company {
+        margin-top: -35px;
+    }
+}

